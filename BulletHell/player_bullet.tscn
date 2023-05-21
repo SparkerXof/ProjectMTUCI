@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://mm0jktm7oovq"]
+
+[ext_resource type="Texture2D" uid="uid://b0lp00r2tc74w" path="res://BulletHell/part.png" id="1_rvxfx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yuur0"]
+radius = 0.1
+
+[node name="RigidBody3D" type="RigidBody3D"]
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_yuur0")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0.602852)
+texture_filter = 0
+texture = ExtResource("1_rvxfx")

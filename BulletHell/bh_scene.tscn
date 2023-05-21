@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dovs3227xemwu"]
+
+[ext_resource type="PackedScene" uid="uid://dt3n826wnyvyo" path="res://BulletHell/player.tscn" id="1_w6alo"]
+[ext_resource type="PackedScene" uid="uid://78h22gk6surd" path="res://BulletHell/bullet_spawner.tscn" id="2_83rmb"]
+
+[node name="BHScene" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+projection = 1
+size = 15.0
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_w6alo")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="BulletSpawner" parent="." instance=ExtResource("2_83rmb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.70294, 0)
+lines_gap = 2.0
+lines_offset_per_shot = 5.0

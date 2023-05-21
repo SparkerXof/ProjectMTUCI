@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dt3n826wnyvyo"]
+
+[ext_resource type="Script" path="res://BulletHell/player.gd" id="1_vv651"]
+[ext_resource type="Texture2D" uid="uid://b0lp00r2tc74w" path="res://BulletHell/part.png" id="2_4qamb"]
+[ext_resource type="PackedScene" uid="uid://mm0jktm7oovq" path="res://BulletHell/player_bullet.tscn" id="2_ghlgx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_42u4j"]
+radius = 0.1
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fy7d7"]
+height = 1.7
+
+[node name="Player" type="StaticBody3D"]
+script = ExtResource("1_vv651")
+bullet = ExtResource("2_ghlgx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_42u4j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_fy7d7")
+
+[node name="HitboxView" type="Sprite3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0.51)
+texture_filter = 0
+texture = ExtResource("2_4qamb")

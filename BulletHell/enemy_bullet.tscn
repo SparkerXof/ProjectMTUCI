@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://clstjoa5xvnn1"]
+
+[ext_resource type="Texture2D" uid="uid://b0lp00r2tc74w" path="res://BulletHell/part.png" id="1_fuojr"]
+[ext_resource type="Script" path="res://BulletHell/enemy_bullet.gd" id="1_p4v5y"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yuur0"]
+radius = 0.1
+
+[node name="RigidBody3D" type="Area3D"]
+script = ExtResource("1_p4v5y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_yuur0")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0.701595)
+texture_filter = 0
+texture = ExtResource("1_fuojr")

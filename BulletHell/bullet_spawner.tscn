@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://78h22gk6surd"]
+
+[ext_resource type="Script" path="res://BulletHell/bullet_spawner.gd" id="1_nglxm"]
+[ext_resource type="PackedScene" uid="uid://clstjoa5xvnn1" path="res://BulletHell/enemy_bullet.tscn" id="2_mg0fy"]
+
+[node name="BulletSpawner" type="Node3D"]
+script = ExtResource("1_nglxm")
+bullet_base = ExtResource("2_mg0fy")
+bullet_speed = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

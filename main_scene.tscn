@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://gn3sunv8vmtm"]
+
+[node name="Main_Scene" type="Node"]
+
+[node name="SubViewport" type="SubViewport" parent="."]
