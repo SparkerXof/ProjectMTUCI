@@ -6,7 +6,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_yuur0"]
 radius = 0.1
 
-[node name="RigidBody3D" type="Area3D"]
+[node name="EnemyBullet" type="Area3D" groups=["bullet"]]
 script = ExtResource("1_p4v5y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

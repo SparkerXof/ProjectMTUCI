@@ -9,7 +9,7 @@ bullet_base = ExtResource("2_mg0fy")
 bullet_speed = 1.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.05
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

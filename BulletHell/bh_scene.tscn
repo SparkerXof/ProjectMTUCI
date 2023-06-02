@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dovs3227xemwu"]
+[gd_scene load_steps=5 format=3 uid="uid://dovs3227xemwu"]
 
 [ext_resource type="PackedScene" uid="uid://dt3n826wnyvyo" path="res://BulletHell/player.tscn" id="1_w6alo"]
 [ext_resource type="PackedScene" uid="uid://78h22gk6surd" path="res://BulletHell/bullet_spawner.tscn" id="2_83rmb"]
+[ext_resource type="Script" path="res://BulletHell/BulletBorder.gd" id="3_phvy8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_138dv"]
+size = Vector3(20, 1, 2)
 
 [node name="BHScene" type="Node3D"]
 
@@ -11,10 +15,47 @@ projection = 1
 size = 15.0
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_w6alo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
 [node name="BulletSpawner" parent="." instance=ExtResource("2_83rmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.70294, 0)
-lines_gap = 2.0
-lines_offset_per_shot = 5.0
+bullet_speed = 5.0
+lines_count = 6
+lines_gap = 5.0
+
+[node name="Borders" type="Node3D" parent="."]
+
+[node name="UpperBorder" type="Area3D" parent="Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+script = ExtResource("3_phvy8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Borders/UpperBorder"]
+shape = SubResource("BoxShape3D_138dv")
+
+[node name="BottomBorder" type="Area3D" parent="Borders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+script = ExtResource("3_phvy8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Borders/BottomBorder"]
+shape = SubResource("BoxShape3D_138dv")
+
+[node name="LeftBorder" type="Area3D" parent="Borders"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -10, 0, 0)
+script = ExtResource("3_phvy8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Borders/LeftBorder"]
+shape = SubResource("BoxShape3D_138dv")
+
+[node name="RightBorder" type="Area3D" parent="Borders"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 10, 0, 0)
+script = ExtResource("3_phvy8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Borders/RightBorder"]
+shape = SubResource("BoxShape3D_138dv")
+
+[connection signal="area_entered" from="Borders/UpperBorder" to="Borders/UpperBorder" method="_on_area_entered"]
+[connection signal="area_entered" from="Borders/BottomBorder" to="Borders/BottomBorder" method="_on_area_entered"]
+[connection signal="area_entered" from="Borders/LeftBorder" to="Borders/LeftBorder" method="_on_area_entered"]
+[connection signal="area_entered" from="Borders/RightBorder" to="Borders/RightBorder" method="_on_area_entered"]
